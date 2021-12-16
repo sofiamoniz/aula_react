@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 
 function TODOList(){
     const [tasks, setTasks] = useState([]);
@@ -6,6 +6,7 @@ function TODOList(){
 
     const addNewTask = () => {
         setTasks([...tasks, newTask]);
+        setNewTask("");
     };
 
     const removeTask = (entry) => {
@@ -16,28 +17,28 @@ function TODOList(){
         if(tasks.length){
             return( 
                 <div>
-                    {tasks.map(entry =>
-                        <div className="container">
-                            <div className="row" style={{marginTop:"5%"}}>
-                                <div className="container">
+                    <div className="container">
+                        <div className="row" style={{marginTop:"5%"}}>
+                            <div className="container">
+                                {tasks.map(entry =>
                                     <div className="row">
                                         <div className="col-sm-6">
-                                        <p>{entry}</p>
+                                            <p>{entry}</p>
                                         </div>
                                         <div className="col-sm-6">
                                             <input type="button" value="Delete" name={entry} onClick={() => removeTask(entry)}/>
                                         </div>
                                     </div>
-                                </div> 
-                            </div>
+                                )}
+                            </div> 
                         </div>
-                    )}
+                    </div>
                 </div>
             )
         }
         else{
             return(
-                <p style={{marginTop:"5%"}}>Nothing to do!</p>
+                    <p style={{marginTop:"5%"}}>Nothing to do!</p>
                 )
         }
     }
@@ -50,7 +51,8 @@ function TODOList(){
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6">
-                                <input type="text" className="form-control input-normal" placeholder="insert new task" value={newTask} onChange={(event) => setNewTask(event.target.value)} />
+                                <input type="text" className="form-control input-normal" placeholder="Insert new task" 
+                                value={newTask} onChange={(event) => setNewTask(event.target.value)} />
                             </div>
                             <div className="col-sm-6">
                                 <input type="button" onClick={addNewTask} value="Add" />
