@@ -20,6 +20,11 @@ function Nav(props){
                   <a className="nav-link">TODO list</a>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/Drivers" style={navStyle} id="nav_item">
+                  <a className="nav-link">Drivers</a>
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>
