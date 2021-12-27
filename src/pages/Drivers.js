@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
+import { Link } from "react-router-dom";
 
-function Drivers(){
+function Drivers(props){
 
     const [driversList, setDriversList] = React.useState([]);
     const [pageSize, setPageSize] = React.useState(20);
@@ -13,11 +14,22 @@ function Drivers(){
         setDriversList(item.List);
     };
 
+    const Td = ({ children, to }) => {
+        // Conditionally wrapping content into a link
+        const ContentTag = to ? Link : 'div';
+      
+        return (
+          <td>
+            <ContentTag to={to}>{children}</ContentTag>
+          </td>
+        );
+      }
+
     
     const retrieveDrivers = () => {
         return (
             <div>
-                <table className="table table-striped">
+                <table className="table">
                     <thead>
                         <tr>
                             <th scope="col">Name</th>
@@ -26,8 +38,8 @@ function Drivers(){
                     </thead>
                     <tbody>
                         {driversList.map(driver =>
-                            <tr key={driver.id}>
-                                <td>{driver.Name}</td>
+                            <tr key={driver.DriverId}>
+                                <Td to={`/DriverDetails/${driver.DriverId}`} onClick={props.his}>{driver.Name}</Td>
                                 <td>{driver.Nationality}</td>
                             </tr>
                         )}  
