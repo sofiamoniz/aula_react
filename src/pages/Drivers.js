@@ -17,7 +17,6 @@ function Drivers(props){
     const Td = ({ children, to }) => {
         // Conditionally wrapping content into a link
         const ContentTag = to ? Link : 'div';
-      
         return (
           <td>
             <ContentTag to={to}>{children}</ContentTag>
