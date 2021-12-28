@@ -39,7 +39,7 @@ function Drivers(props){
                     <tbody>
                         {driversList.map(driver =>
                             <tr key={driver.DriverId}>
-                                <Td to={`/DriverDetails/${driver.DriverId}`} onClick={props.his}>{driver.Name}</Td>
+                                <Td to={`/DriverDetails/${driver.DriverId}`}>{driver.Name}</Td>
                                 <td>{driver.Nationality}</td>
                             </tr>
                         )}  
