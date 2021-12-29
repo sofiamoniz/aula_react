@@ -5,7 +5,6 @@ function Home(){
         <div>
             <h1>Welcome to your ReactJs app!</h1>
         </div>
-        
     )
 }
 

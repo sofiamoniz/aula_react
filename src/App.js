@@ -7,9 +7,6 @@ import TODOList from './pages/TODOList';
 import Drivers from './pages/Drivers';
 import DriverDetails from './pages/DriverDetails';
 
-
-
-
 function App() {
   return (
     <div className="App">	
@@ -23,7 +20,6 @@ function App() {
 			</Routes>
 		</Router>	
 	</div>
-
   );
 }
 

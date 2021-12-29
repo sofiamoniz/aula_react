@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import { Link } from "react-router-dom";
 
-function Drivers(props){
+function Drivers(){
 
     const [driversList, setDriversList] = React.useState([]);
-    const [pageSize, setPageSize] = React.useState(20);
     const [page, setPage] = React.useState(1);
+    const pageSize = 20;
 
 
     const fetchState = async () => {
@@ -70,7 +70,7 @@ function Drivers(props){
     }
 
     const changePageBackward = () => {
-        if(page > 1){
+        if (page > 1){
             setPage(page-1);
             fetchState();
         }
