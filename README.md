@@ -6,4 +6,5 @@ Simple website made with React JS. In there, you can find a TODO list and an exa
 - cd aula_react
 - npm install
 - npm start
-- application is now running at localhost:3000
+
+The application is now running at localhost:3000
