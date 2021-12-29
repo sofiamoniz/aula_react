@@ -78,7 +78,6 @@ function Drivers(props){
     
     useEffect(() => {
         fetchState();
-        
     },[])
 
     return(
