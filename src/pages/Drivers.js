@@ -26,26 +26,42 @@ function Drivers(props){
 
     
     const retrieveDrivers = () => {
-        return (
-            <div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Nationality</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {driversList.map(driver =>
-                            <tr key={driver.DriverId}>
-                                <Td to={`/DriverDetails/${driver.DriverId}`}>{driver.Name}</Td>
-                                <td>{driver.Nationality}</td>
+        if (driversList){
+            return (
+                <div>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Nationality</th>
                             </tr>
-                        )}  
-                    </tbody>
-                </table>
-            </div>
-        )
+                        </thead>
+                        <tbody>
+                            {driversList.map(driver =>
+                                <tr key={driver.DriverId}>
+                                    <Td to={`/DriverDetails/${driver.DriverId}`}>{driver.Name}</Td>
+                                    <td>{driver.Nationality}</td>
+                                </tr>
+                            )}  
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination">
+                            <li className="page-item"><a className="page-link" onClick={changePageBackward}>Previous</a></li>
+                            <li className="page-item"><a className="page-link" onClick={changePageForward}>Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            )
+        }
+        else{
+            return(
+                <div>
+                    <p>Waiting for API to fetch!</p>
+                </div>
+            )
+        }
+        
     }
 
     const changePageForward = () => {
@@ -69,12 +85,6 @@ function Drivers(props){
         <div>
             <h1>Get to know the drivers</h1>
             {retrieveDrivers()}
-            <nav aria-label="Page navigation example">
-                <ul className="pagination">
-                    <li className="page-item"><a className="page-link" onClick={changePageBackward}>Previous</a></li>
-                    <li className="page-item"><a className="page-link" onClick={changePageForward}>Next</a></li>
-                </ul>
-            </nav>
         </div>
         
     )
