@@ -26,7 +26,7 @@ function Drivers(){
 
     
     const retrieveDrivers = () => {
-        if (driversList){
+        if (driversList.length){
             return (
                 <div>
                     <table className="table">
@@ -45,7 +45,7 @@ function Drivers(){
                             )}  
                         </tbody>
                     </table>
-                    <nav aria-label="Page navigation example">
+                    <nav aria-label="Page navigation">
                         <ul className="pagination">
                             <li className="page-item"><a className="page-link" onClick={changePageBackward}>Previous</a></li>
                             <li className="page-item"><a className="page-link" onClick={changePageForward}>Next</a></li>

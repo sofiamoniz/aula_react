@@ -16,29 +16,33 @@ function DriverDetails(){
     };
 
     const retrieveRaces = () => {
-        return (
-            <div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Circuit Name</th>
-                            <th scope="col">Year</th>
-                            <th scope="col">Race Name</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {driverRaces.map(race =>
-                            <tr key={race.RaceId}>
-                                <td>{race.CircuitName}</td>
-                                <td>{race.Year}</td>
-                                <td>{race.Name}</td>
-                                <td></td>
+        if(driverRaces.length > 0){
+            return (
+                <div>
+                    <h3 style={{marginTop: '5%', marginBottom:'5%'}}>Races:</h3>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Circuit Name</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Race Name</th>
                             </tr>
-                        )}  
-                    </tbody>
-                </table>
-            </div>
-        )
+                        </thead>
+                        <tbody>
+                            {driverRaces.map(race =>
+                                <tr key={race.RaceId}>
+                                    <td>{race.CircuitName}</td>
+                                    <td>{race.Year}</td>
+                                    <td>{race.Name}</td>
+                                    <td></td>
+                                </tr>
+                            )}  
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
+        
     }
 
     const retrieveImage = (image) =>{
@@ -57,25 +61,24 @@ function DriverDetails(){
         fetchState();
     },[])
 
-    if(driverDetails){
-        return(
+    return(
+        <div>
             <div>
-                <div>
-                    <h1 style={{marginTop:'5%'}}>{driverDetails.Name}</h1>
-                    {retrieveImage(driverDetails.ImageUrl)}
-                    <p >Nationality: {driverDetails.Nationality}</p>
-                    <a href={driverDetails.Url}>Click here to know more</a>
-                    <h3 style={{marginTop: '5%', marginBottom:'5%'}}>Races:</h3>
-                    {retrieveRaces()}
-                </div>
+                {driverDetails.Name || driverDetails.Nationality  || driverDetails.Url ? (
+                    <div>
+                        <h1 style={{marginTop:'5%'}}>{driverDetails.Name}</h1>
+                        {retrieveImage(driverDetails.ImageUrl)}
+                        <p>Nationality: {driverDetails.Nationality}</p>
+                        <a href={driverDetails.Url}>Click here to know more</a>
+                        {retrieveRaces()}
+                    </div>
+                ) : (
+                    <p>Waiting for API to fetch!</p>
+                )}
             </div>
-        )
-    }
-    else{
-        return(
-            <p>Waiting for API to fetch</p>
-        )
-    }
+        </div>
+    )
+    
    
 }
 
